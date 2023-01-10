@@ -1,6 +1,7 @@
 import './App.css';
 import { useSession, useSupabaseClient, useSessionContext } from '@supabase/auth-helpers-react';
 import { useState } from 'react';
+import DateTimePicker from 'react-datetime-picker';
 
 function App() {
   //Date and Time related state
@@ -33,7 +34,10 @@ function App() {
     await supabase.auth.signOut()
   }
 
-  console.log(session)
+  async function createCalEvent() {
+
+    console.log(session)
+  }
 
   return (
     <div className="App">
@@ -42,6 +46,16 @@ function App() {
           session ?
             <>
               <h2>Hi there {session.user.email}</h2>
+              <p>Start your event</p>
+              <DateTimePicker onChange={setStart} value={start} />
+              <p>End of your event</p>
+              <DateTimePicker onChange={setEnd} value={end} />
+              <p>Event Name</p>
+              <input type="text" onChange={(e) => setEventName(e.target.value)} />
+              <p>Event Description</p>
+              <input type="text" onChange={(e) => setEventDescription(e.target.value)} />
+              <hr />
+              <button onClick={() => createCalEvent}>Create Calendar Event</button>
               <button onClick={() => googleSignOut()}>Sign In With Google</button>
             </> :
             <>
