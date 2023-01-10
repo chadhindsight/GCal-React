@@ -7,7 +7,7 @@ function App() {
   const [start, setStart] = useState(new Date());
   const [end, setEnd] = useState(new Date());
   const [event, setEventName] = useState(new Date());
-  const [description, setEventDescription] = useState(new Date());
+  const [eventDescription, setEventDescription] = useState(new Date());
 
 
   const session = useSession(); // tokens, when a session exists, we have a user
