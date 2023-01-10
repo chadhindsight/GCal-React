@@ -1,10 +1,22 @@
 import './App.css';
-import { useSession, useSupabaseClient } from '@supabase/auth-helpers-react';
+import { useSession, useSupabaseClient, useSessionContext } from '@supabase/auth-helpers-react';
+import { useState } from 'react';
 
 function App() {
+  //Date and Time related state
+  const [start, setStart] = useState(new Date());
+  const [end, setEnd] = useState(new Date());
+  const [event, setEventName] = useState(new Date());
+  const [description, setEventDescription] = useState(new Date());
+
+
   const session = useSession(); // tokens, when a session exists, we have a user
   const supabase = useSupabaseClient(); // links up to supabase
+  const isLoading = useSessionContext();
 
+  if (isLoading) {
+    return <></>
+  }
   async function googleSignIn() {
     const { error } = await supabase.auth.signInWithOAuth({
       provider: 'google',
