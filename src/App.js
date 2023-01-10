@@ -33,7 +33,7 @@ function App() {
               <button onClick={() => googleSignOut()}>Sign In With Google</button>
             </> :
             <>
-              <button onClick={() => googleSignIn()}>Sign In With Google</button>
+              <button onClick={() => googleSignIn()}>Sign Out</button>
             </>
         }
       </div>
