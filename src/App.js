@@ -1,5 +1,5 @@
 import './App.css';
-import { useSession, useSupabaseClient, useSessionContext } from '@supabase/auth-helpers-react';
+import { useSession, useSupabaseClient } from '@supabase/auth-helpers-react';
 import { useState } from 'react';
 import DateTimePicker from 'react-datetime-picker';
 
