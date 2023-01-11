@@ -7,17 +7,12 @@ function App() {
   //Date and Time related state
   const [start, setStart] = useState(new Date());
   const [end, setEnd] = useState(new Date());
-  const [event, setEventName] = useState(new Date());
+  const [eventName, setEventName] = useState(new Date());
   const [eventDescription, setEventDescription] = useState(new Date());
 
-
-  const session = useSession(); // tokens, when a session exists, we have a user
+  const session = useSession(); // when a session exists, we have a user
   const supabase = useSupabaseClient(); // links up to supabase
-  const isLoading = useSessionContext();
 
-  if (isLoading) {
-    return <></>
-  }
   async function googleSignIn() {
     const { error } = await supabase.auth.signInWithOAuth({
       provider: 'google',
@@ -36,11 +31,34 @@ function App() {
 
   async function createCalEvent() {
 
-    console.log(session)
+    const event = {
+      "summary": eventName,
+      "description": eventDescription,
+      "start": {
+        "dateTime": start.toISOString(),
+        "timeZone": Intl.DateTimeFormat().timeZone
+      },
+      "end": {
+        "dateTime": start.toISOString(),
+        "timeZone": Intl.DateTimeFormat().timeZone
+      }
+    }
+    await fetch("https://www.googleapis.com/calendar/v3/calendars/primary/events", {
+      method: "POST",
+      headers: {
+        "Authorization": "Bearer" + session.provider_token //Access token for google
+      },
+      body: JSON.stringify(event)
+    }).then(data => {
+      return data.json();
+    }).then(data => {
+      console.log(data)
+      alert("Event created, check your Google Calendar")
+    })
   }
 
   return (
-    <div className="App">
+    <div>
       <div style={{ width: "400px", margin: "30px auto" }}>
         {
           session ?
