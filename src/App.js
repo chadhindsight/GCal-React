@@ -75,10 +75,10 @@ function App() {
               <input type="text" onChange={(e) => setEventDescription(e.target.value)} />
               <hr />
               <button onClick={() => createCalEvent()}>Create Calendar Event</button>
-              <button onClick={() => googleSignOut()}>Sign In With Google</button>
+              <button onClick={() => googleSignOut()}>Sign Out</button>
             </> :
             <>
-              <button onClick={() => googleSignIn()}>Sign Out</button>
+              <button onClick={() => googleSignIn()}>Sign In With Google</button>
             </>
         }
       </div>
