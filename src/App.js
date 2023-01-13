@@ -36,26 +36,27 @@ function App() {
       "description": eventDescription,
       "start": {
         "dateTime": start.toISOString(),
-        "timeZone": Intl.DateTimeFormat().timeZone
+        "timeZone": Intl.DateTimeFormat().resolvedOptions.timeZone
       },
       "end": {
         "dateTime": start.toISOString(),
-        "timeZone": Intl.DateTimeFormat().timeZone
+        "timeZone": Intl.DateTimeFormat().resolvedOptions.time
       }
     }
     await fetch("https://www.googleapis.com/calendar/v3/calendars/primary/events", {
       method: "POST",
       headers: {
-        "Authorization": "Bearer" + session.provider_token //Access token for google
+        "Authorization": "Bearer " + session.provider_token //Access token for google
       },
       body: JSON.stringify(event)
     }).then(data => {
       return data.json();
     }).then(data => {
       console.log(data)
-      alert("Event created, check your Google Calendar")
+      alert("Your event has been created, check your Google Calendar")
     })
   }
+  console.log('ass', session)
 
   return (
     <div>
@@ -73,7 +74,7 @@ function App() {
               <p>Event Description</p>
               <input type="text" onChange={(e) => setEventDescription(e.target.value)} />
               <hr />
-              <button onClick={() => createCalEvent}>Create Calendar Event</button>
+              <button onClick={() => createCalEvent()}>Create Calendar Event</button>
               <button onClick={() => googleSignOut()}>Sign In With Google</button>
             </> :
             <>
