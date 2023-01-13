@@ -69,7 +69,7 @@ function App() {
               <DateTimePicker onChange={setStart} value={start} />
               <p>End of your event</p>
               <DateTimePicker onChange={setEnd} value={end} />
-              <p>Event Name</p>
+              <p>Name of your event</p>
               <input type="text" onChange={(e) => setEventName(e.target.value)} />
               <p>Event Description</p>
               <input type="text" onChange={(e) => setEventDescription(e.target.value)} />
