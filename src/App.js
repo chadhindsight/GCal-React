@@ -22,7 +22,7 @@ function App() {
     })
     if (error) {
       console.log(error);
-      alert("There was an error logging into Google provider with Supabase")
+      alert("There was an error logging into the Google provider with Supabase")
     }
   }
   async function googleSignOut() {
