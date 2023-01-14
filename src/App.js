@@ -4,7 +4,7 @@ import { useState } from 'react';
 import DateTimePicker from 'react-datetime-picker';
 
 function App() {
-  //State related to date and time
+  // State related to setting event date and time
   const [start, setStart] = useState(new Date());
   const [end, setEnd] = useState(new Date());
   const [eventName, setEventName] = useState(new Date());
