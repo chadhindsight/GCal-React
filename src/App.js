@@ -30,7 +30,7 @@ function App() {
   }
 
   async function createCalEvent() {
-
+    // We pass this event object to our req on gCal's endpoint
     const event = {
       "summary": eventName,
       "description": eventDescription,
