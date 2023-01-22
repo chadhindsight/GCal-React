@@ -10,7 +10,7 @@ function App() {
   const [eventName, setEventName] = useState(new Date());
   const [eventDescription, setEventDescription] = useState(new Date());
 
-  const session = useSession(); // when a session exists, we have a user
+  const session = useSession(); // when a session actually exists, we have a user
   const supabase = useSupabaseClient(); // links up to supabase
 
   async function googleSignIn() {
