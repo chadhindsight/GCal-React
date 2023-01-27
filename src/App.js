@@ -10,9 +10,8 @@ function App() {
   const [eventName, setEventName] = useState(new Date());
   const [eventDescription, setEventDescription] = useState(new Date());
 
-  const session = useSession(); // when a session exists, we have a user
-  const supabase = useSupabaseClient(); // links up to supabase 
-
+  const session = useSession(); // when a session exists, we have a user.
+  const supabase = useSupabaseClient();
   async function googleSignIn() {
     const { error } = await supabase.auth.signInWithOAuth({
       provider: 'google',
