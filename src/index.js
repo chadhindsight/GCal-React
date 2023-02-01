@@ -4,7 +4,6 @@ import './index.css';
 import App from './App';
 import { createClient } from '@supabase/supabase-js';
 import reportWebVitals from './reportWebVitals';
-// Allows React to talk to supabase from any component
 import { SessionContextProvider } from "@supabase/auth-helpers-react";
 
 const supabase = createClient("https://mwdfdqtjinavxvejcqun.supabase.co",
