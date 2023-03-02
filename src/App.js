@@ -4,13 +4,13 @@ import { useState } from 'react';
 import DateTimePicker from 'react-datetime-picker';
 
 function App() {
-  // Local state related to setting event date and time.
+  // Local state related to setting event date and time.=
   const [start, setStart] = useState(new Date());
   const [end, setEnd] = useState(new Date());
   const [eventName, setEventName] = useState(new Date());
   const [eventDescription, setEventDescription] = useState(new Date());
 
-  const session = useSession(); // when a session exists, we have a user
+  const session = useSession();
   const supabase = useSupabaseClient();
   async function googleSignIn() {
     const { error } = await supabase.auth.signInWithOAuth({
